@@ -1,7 +1,7 @@
 const axios = require('axios');
 const router = require('express').Router();
 
-const joshURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc';
+const joshURL = 'http://44.204.94.11:5005';
 const kunURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc';
 const qiURL = 'http://localhost:3504';
 
@@ -11,11 +11,7 @@ const qiURL = 'http://localhost:3504';
 
 router.get('/products*', (req, res) => {
   // console.log(joshURL + req.originalUrl);
-  axios.get(joshURL + req.originalUrl, {
-    headers: {
-      Authorization: process.env.API_TOKEN,
-    },
-  })
+  axios.get(joshURL + req.originalUrl)
     .then((response) => {
       res.send(response.data);
     })
