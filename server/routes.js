@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const joshURL = 'http://44.204.94.11:5005';
 const kunURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc';
-const qiURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc';
+const qiURL = 'http://localhost:3504';
 
 // Connect methods to their corresponding routes
 
@@ -20,9 +20,11 @@ router.get('/products*', (req, res) => {
     });
 });
 
-router.get('/qa*', (req, res) => {
-  // console.log(kunURL + req.originalUrl);
-  axios.get(kunURL + req.originalUrl, {
+router.use('/qa*', (req, res) => {
+  axios({
+    method: req.method,
+    url: kunURL + req.originalUrl,
+    data: req.body,
     headers: {
       Authorization: process.env.API_TOKEN,
     },
@@ -35,8 +37,12 @@ router.get('/qa*', (req, res) => {
     });
 });
 
-router.get('/reviews*', (req, res) => {
-  axios.get(qiURL + req.originalUrl, {
+
+router.use('/reviews*', (req, res) => {
+  axios({
+    method: req.method,
+    url: qiURL + req.originalUrl,
+    data: req.body,
     headers: {
       Authorization: process.env.API_TOKEN,
     },
