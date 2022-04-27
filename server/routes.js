@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const joshURL = 'http://44.204.94.11:5005';
 const kunURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc';
-const qiURL = 'http://localhost:3504';
+const qiURL = 'http://3.215.63.203:3504';
 
 // Connect methods to their corresponding routes
 
